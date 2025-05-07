@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import SignupImg from "../../assets/signUpImg/signupImg.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import MyLogo from "../../assets/heroImg/Mylogo.png";
 
 function Signup() {
   return (
@@ -17,13 +18,19 @@ function Signup() {
             src={SignupImg}
             alt="Img SignUp"
           />
-          <p className="text-lg text-center">Build your own quizzes with personalized question</p>
+          <p className="text-lg text-center">
+            Build your own quizzes with personalized question
+          </p>
         </div>
 
         {/* Form container  Right Side*/}
         <div className="flex flex-col gap-4">
           {/* Title Container */}
           <div>
+            {/* Logo */}
+            <div className="md:hidden flex items-center justify-center ">
+              <img src={MyLogo} alt="My Logo" className="h-24 md:h-14 mr-2" />
+            </div>
             <h1 className="text-2xl md:text-3xl font-semibold text-center md:text-start">
               Create an account
             </h1>
@@ -33,8 +40,9 @@ function Signup() {
           <div>
             <p className="text-sm font-thin md:text-base">
               Already have an account?{" "}
-
-              <Link className="text-purple-500 hover:underline" to="/Login">Log In</Link>
+              <Link className="text-purple-500 hover:underline" to="/Login">
+                Log In
+              </Link>
             </p>
           </div>
 
@@ -59,7 +67,7 @@ function Signup() {
             </div>
 
             {/* Email Password etc Column container */}
-            <div className="flex flex-col gap-4"> 
+            <div className="flex flex-col gap-4">
               {/* Email */}
               <input
                 className=" w-full p-2 bg-transparent rounded-md border border-gray-700 outline-purple-700"
@@ -67,7 +75,7 @@ function Signup() {
                 placeholder="Email"
                 required
               />
-              
+
               {/* Password */}
               <input
                 className=" w-full p-2 bg-transparent rounded-md border border-gray-700 outline-purple-700"
@@ -107,13 +115,18 @@ function Signup() {
               <div className="flex items-center justify-center gap-2">
                 <button className="w-full bg-transparent font-medium text-textColor py-3 rounded flex justify-center items-center gap-2 border border-gray-700">
                   {" "}
-                  <FontAwesomeIcon icon={faGoogle} style={{ color: '#673ab7', fontSize: '24px' }} />
+                  <FontAwesomeIcon
+                    icon={faGoogle}
+                    style={{ color: "#673ab7", fontSize: "24px" }}
+                  />
                   Google
                 </button>
                 <button className="w-full bg-transparent font-medium text-textColor py-3 rounded flex justify-center items-center gap-2 border border-gray-700">
                   {" "}
-                  <FontAwesomeIcon icon={faFacebook} style={{ color: '#673ab7', fontSize: '24px' }} />
-
+                  <FontAwesomeIcon
+                    icon={faFacebook}
+                    style={{ color: "#673ab7", fontSize: "24px" }}
+                  />
                   Google
                 </button>
               </div>

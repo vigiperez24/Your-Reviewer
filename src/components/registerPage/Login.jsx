@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import LoginImg from "../../assets/LoginImg/LoginImg.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import MyLogo from "../../assets/heroImg/Mylogo.png";
 
 function Login() {
   return (
@@ -17,13 +18,20 @@ function Login() {
             src={LoginImg}
             alt="Img Login"
           />
-          <p className="text-lg text-center">Test your knowledge with available quizzes</p>
+          <p className="text-lg text-center">
+            Test your knowledge with available quizzes
+          </p>
         </div>
 
         {/* Form container  Right Side*/}
         <div className="flex flex-col gap-4">
           {/* Title Container */}
           <div>
+            {/* Logo */}
+            <div className="md:hidden flex items-center justify-center ">
+              <img src={MyLogo} alt="My Logo" className="h-24 md:h-14 mr-2" />
+            </div>
+
             <h1 className="text-2xl md:text-3xl font-semibold text-center md:text-start">
               Log In
             </h1>
@@ -33,17 +41,16 @@ function Login() {
           <div>
             <p className="text-sm font-thin md:text-sm">
               You don't have an account?{" "}
-
-               <Link className="text-purple-500 hover:underline" to="/Register">Sign up here</Link>
+              <Link className="text-purple-500 hover:underline" to="/Register">
+                Sign up here
+              </Link>
             </p>
           </div>
 
           {/* Form container */}
           <form className="flex flex-col gap-4">
-
-
             {/* Email Password etc Column container */}
-            <div className="flex flex-col gap-4"> 
+            <div className="flex flex-col gap-4">
               {/* Email */}
               <input
                 className=" w-full p-2 bg-transparent rounded-md border border-gray-700 outline-purple-700"
@@ -90,13 +97,18 @@ function Login() {
               <div className="flex items-center justify-center gap-2">
                 <button className="w-full bg-transparent font-medium text-textColor py-3 rounded flex justify-center items-center gap-2 border border-gray-700">
                   {" "}
-                  <FontAwesomeIcon icon={faGoogle} style={{ color: '#673ab7', fontSize: '24px' }} />
+                  <FontAwesomeIcon
+                    icon={faGoogle}
+                    style={{ color: "#673ab7", fontSize: "24px" }}
+                  />
                   Google
                 </button>
                 <button className="w-full bg-transparent font-medium text-textColor py-3 rounded flex justify-center items-center gap-2 border border-gray-700">
                   {" "}
-                  <FontAwesomeIcon icon={faFacebook} style={{ color: '#673ab7', fontSize: '24px' }} />
-
+                  <FontAwesomeIcon
+                    icon={faFacebook}
+                    style={{ color: "#673ab7", fontSize: "24px" }}
+                  />
                   Google
                 </button>
               </div>
