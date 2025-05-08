@@ -1,6 +1,6 @@
 import React from 'react'
 // import Sidebar from '../components/Sidebar/Sidebar'
-import DashboardLayout from '../components/layout/DashboardLayout'
+import DashboardCollection from '../components/layout/DashboardCollection'
 
 
 
@@ -8,7 +8,7 @@ function Dashboard() {
   return (
     <>
     {/* <Sidebar/> */}
-    <DashboardLayout/>
+    <DashboardCollection/>
     </>
   )
 }

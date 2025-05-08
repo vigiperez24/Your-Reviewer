@@ -10,6 +10,8 @@
     FaCog,
     FaSignOutAlt,
     FaChartBar,
+    FaBars
+    
   } from "react-icons/fa";
 
   function Sidebar() {
