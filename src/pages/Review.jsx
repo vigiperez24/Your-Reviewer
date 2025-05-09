@@ -1,11 +1,12 @@
 import React from 'react'
-import Sidebar from '../components/Sidebar/Sidebar'
+import ReviewCollection from "../components/layout/ReviewCollection/ReviewCollection"
+
 
 
 function Review() {
   return (
     <>
-    <Sidebar/>
+    <ReviewCollection/>
     </>
   )
 }

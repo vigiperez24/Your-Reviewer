@@ -4,8 +4,9 @@ import Home from './pages/Home';
 import RegisterandLogin from './pages/RegisterandLogin';
 import Login from './components/registerPage/Login';
 
+
 import Dashboard from './pages/Dashboard';
-import Review from './pages/Review';
+import Review from './pages/Review'
 
 import './index.css';
 

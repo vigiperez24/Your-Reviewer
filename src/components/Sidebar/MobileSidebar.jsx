@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Mylogo from "../../assets/heroImg/MyLogo.png";
+  // Font Awesome 
 import {
   FaClipboard,
   FaTachometerAlt,

@@ -1,7 +1,7 @@
   import React, { useState } from "react";
   import { Link, useLocation } from "react-router-dom";
   import Mylogo from "../../assets/heroImg/MyLogo.png";
-  
+  // Font Awesome
   import {
     FaChevronLeft,
     FaClipboard,
