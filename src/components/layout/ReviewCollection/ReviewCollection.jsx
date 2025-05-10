@@ -17,7 +17,7 @@ function ReviewCollection() {
         <MobileSidebar />
       </div>
       {/* Subject AddSubjectModal, SubjectCard, SubjectList */}
-      <main className="w-full max-w-screen-2xl mx-auto md:py-4 p-4 overflow-x-auto">
+      <main className="w-full max-w-screen-2xl mx-auto md:py-6 p-4 overflow-x-auto">
         {/* Add Subject */}
         <div>
           <AddSubjectSection/>
