@@ -3,7 +3,7 @@ import Sidebar from "../../Sidebar/Sidebar";
 import MobileSidebar from "../../Sidebar/MobileSidebar";
 import SubjectCard from "../../ReviewLayout/SubjectCard";
 import RecentQuizes from "../../ReviewLayout/RecentQuizes";
-import AddSubjectSection from "../../ReviewLayout/AddSubjectSection";
+
 function ReviewCollection() {
   return (
     <div className="flex flex-col md:flex-row h-screen w-full relative">
@@ -18,10 +18,7 @@ function ReviewCollection() {
       </div>
       {/* Subject AddSubjectModal, SubjectCard, SubjectList */}
       <main className="w-full max-w-screen-2xl mx-auto md:py-6 p-4 overflow-x-auto">
-        {/* Add Subject */}
-        <div>
-          <AddSubjectSection/>
-        </div>
+
         {/* Subject Card */}
         <div>
           <SubjectCard/>

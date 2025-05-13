@@ -1,51 +1,142 @@
-import React from "react";
-// Feather Icons
+// src/components/SubjectCard.jsx
+import React, { useState } from "react";
 import {
   FaPlus,
   FaFilter,
   FaSort,
   FaRegFolderOpen,
   FaEllipsisV,
+  FaEdit,
+  FaTrash,
 } from "react-icons/fa";
 
 function SubjectCard() {
-  const folders = [
+  // State for folders
+  const [folders, setFolders] = useState([
     { id: 1, name: "Filipino", quizCount: 5, createdAt: "Yesterday" },
     { id: 2, name: "English", quizCount: 3, createdAt: "Tuesday" },
     { id: 3, name: "Math", quizCount: 5, createdAt: "Wednesday" },
-    { id: 4, name: "Filipino", quizCount: 5, createdAt: "Yesterday" },
-    { id: 5, name: "English", quizCount: 3, createdAt: "Tuesday" },
-    { id: 6, name: "Math", quizCount: 5, createdAt: "Wednesday" },
-  ];
+    { id: 4, name: "Science", quizCount: 2, createdAt: "Monday" },
+    { id: 5, name: "History", quizCount: 1, createdAt: "Today" },
+    { id: 6, name: "Physics", quizCount: 4, createdAt: "Last week" },
+  ]);
 
-  folders.map((folder) => {
-    console.log(folder.name);
-  });
+  // Modal and Edit States
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editedName, setEditedName] = useState("");
+  const [currentFolder, setCurrentFolder] = useState(null);
+  const [openMenuId, setOpenMenuId] = useState(null); // Track which menu is open
+  const [isEditing, setIsEditing] = useState(false);
+
+  // Toggle dropdown menu per folder
+  const toggleDropDown = (folderId) => {
+    setOpenMenuId(openMenuId === folderId ? null : folderId);
+  };
+
+  // Open modal for creating new or editing existing folder
+  const handleCreateClick = () => {
+    setIsEditing(false);
+    setEditedName("");
+    setIsModalOpen(true);
+  };
+
+  const handleEditClick = (folder) => {
+    setIsEditing(true);
+    setCurrentFolder(folder);
+    setEditedName(folder.name);
+    setOpenMenuId(null); // Close dropdown after click
+    setIsModalOpen(true);
+  };
+
+  // Save folder (create or edit)
+  const handleSaveFolder = () => {
+    if (!editedName.trim()) return;
+
+    if (isEditing) {
+      // Update existing folder
+      const updatedFolders = folders.map((f) =>
+        f.id === currentFolder.id ? { ...f, name: editedName } : f
+      );
+      setFolders(updatedFolders);
+    } else {
+      // Create new folder
+      const newFolder = {
+        id: Date.now(),
+        name: editedName,
+        quizCount: 0,
+        createdAt: "Today",
+      };
+      setFolders([...folders, newFolder]);
+    }
+
+    // Reset states
+    setIsModalOpen(false);
+    setIsEditing(false);
+    setCurrentFolder(null);
+    setEditedName("");
+  };
+
+  // Delete folder
+  const handleDeleteClick = (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this folder?"
+    );
+    if (confirmDelete) {
+      const updatedFolders = folders.filter((f) => f.id !== id);
+      setFolders(updatedFolders);
+    }
+  };
+
   return (
     <div className="py-6 md:px-6 flex flex-col gap-3">
-      {/* Title */}
-      <div>
-        <h1>Folder</h1>
+      {/* Page Title */}
+      <h1 className="text-2xl font-medium">Subject</h1>
+
+      {/* Divider Line */}
+      <hr className="border-t border-gray-300 my-2" />
+
+      {/* Buttons Section */}
+      <div className="flex flex-wrap gap-3 justify-between items-center">
+        {/* New Folder Button */}
+        <button
+          onClick={handleCreateClick}
+          className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded-md flex items-center justify-center gap-2"
+        >
+          <FaPlus /> New
+        </button>
+
+        {/* Filters & Sort */}
+        <div className="flex gap-3">
+          <button className="bg-transparent px-3 rounded-md text-gray-500 flex items-center justify-center gap-2 p-1 border border-gray-300 hover:bg-gray-100 transition">
+            <FaFilter /> Filters
+          </button>
+          <button className="bg-transparent px-3 rounded-md text-gray-500 flex items-center justify-center gap-2 p-1 border border-gray-300 hover:bg-gray-100 transition">
+            <FaSort /> Sort By Latest
+          </button>
+        </div>
       </div>
+
+      {/* Folders Title */}
+      <h1 className="text-lg mt-3">Folder</h1>
+
       {/* Folder Container */}
-      <div className="grid  gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {folders.map((folder) => (
           <div
             key={folder.id}
-            className="border-l-4  border-indigo-200 hover:border-indigo-400 rounded-md flex justify-between px-4 py-2 items-center bg-white shadow-md gap-4"
+            className="border-l-4 border-indigo-200 hover:border-indigo-400 rounded-md flex justify-between px-4 py-2 items-center bg-white shadow-md gap-4 relative"
           >
             <div className="flex items-center gap-4">
               {/* Icon Container */}
               <div className="w-10 h-10 bg-indigo-100 flex items-center justify-center rounded-full">
-                <span className="text-indigo-600 font-semibold text-xl">
+                <span className="text-indigo-600 text-xl">
                   <FaRegFolderOpen />
                 </span>
               </div>
-              {/* Subject, Quizzes, CreatedAt */}
+
+              {/* Folder Info */}
               <div className="flex flex-col">
-                <h1 className="text-lg font-semibold text-gray-">
-                  {folder.name}
-                </h1>
+                <h1 className="text-lg font-semibold">{folder.name}</h1>
                 <p className="text-gray-500 text-sm">
                   {folder.quizCount} quiz{folder.quizCount !== 1 ? "es" : ""}
                 </p>
@@ -54,14 +145,88 @@ function SubjectCard() {
                 </p>
               </div>
             </div>
-            {/* Three Dot Settings */}
-            <span>
+
+            {/* Three Dots Button */}
+            <button
+              onClick={() => toggleDropDown(folder.id)}
+              className="text-gray-500 hover:text-gray-700 focus:outline-none"
+            >
               <FaEllipsisV />
-            </span>
+            </button>
+
+            {/* Dropdown Modal for Edit/Delete */}
+            {openMenuId === folder.id && (
+              <div className="absolute right-0 top-8 mt-1 w-32 bg-white border rounded-md shadow-lg z-10">
+                <ul className="py-1">
+                  <li>
+                    <button
+                      onClick={() => handleEditClick(folder)}
+                      className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition"
+                    >
+                      <FaEdit className="text-indigo-600" /> Edit
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleDeleteClick(folder.id)}
+                      className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100 transition"
+                    >
+                      <FaTrash className="text-red-500" /> Delete
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         ))}
-        {folders.length === 0 && <p>No folders yet. Create one!</p>}
+
+        {folders.length === 0 && (
+          <p className="italic text-gray-500 col-span-full">
+            No folders yet. Create one!
+          </p>
+        )}
       </div>
+
+      {/* MODAL - Create New Folder / Edit Folder */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg w-full max-w-md mx-auto p-6">
+            <h2 className="text-xl font-semibold mb-4">
+              {isEditing ? "Edit Folder" : "Create New Folder"}
+            </h2>
+
+            {/* Input Field */}
+            <input
+              type="text"
+              value={editedName}
+              onChange={(e) => setEditedName(e.target.value)}
+              placeholder="Enter subject/folder name"
+              className="w-full border border-gray-300 rounded px-3 py-2 mb-6"
+              autoFocus
+            />
+
+            {/* Action Buttons */}
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => {
+                  setIsModalOpen(false);
+                  setIsEditing(false);
+                  setEditedName("");
+                }}
+                className="px-4 py-2 text-gray-600 hover:text-gray-800"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSaveFolder}
+                className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+              >
+                {isEditing ? "Update" : "Create"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
