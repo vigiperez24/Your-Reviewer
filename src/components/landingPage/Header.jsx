@@ -13,7 +13,7 @@ export default function Header() {
         {/* Buttons login/signup */}
         <div className="ml-auto flex gap-4">
           <button className="lg:text-lg font-medium">
-            <Link to="/register">Sign up</Link>
+            <Link to="/Register">Sign up</Link>
           </button>
           <button className="lg:text-lg bg-buttonBg px-3 py-2 rounded-md text-buttonText hover:bg-bgButtonHover text-sm font-medium">
             <Link to="/Login">Log In</Link>

@@ -34,7 +34,7 @@
       },
       { id: "profile", label: "Profile", icon: <FaUser />, path: "/profile" },
       { id: "settings", label: "Settings", icon: <FaCog />, path: "/settings" },
-      { id: "logout", label: "Logout", icon: <FaSignOutAlt />, path: "/logout" },
+      { id: "logout", label: "Logout", icon: <FaSignOutAlt />, path: "/Home" },
     ];
 
     return (

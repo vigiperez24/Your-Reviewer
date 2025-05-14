@@ -24,7 +24,7 @@ function Signup() {
         </div>
 
         {/* Form container  Right Side*/}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 w-full px-4">
           {/* Title Container */}
           <div>
             {/* Logo */}
@@ -47,7 +47,7 @@ function Signup() {
           </div>
 
           {/* Form container */}
-          <form className="flex flex-col gap-4">
+          <form className="flex flex-col gap-4 ">
             {/* first Name and Last Name Row Container*/}
             <div className="flex gap-2">
               {/* First Name */}

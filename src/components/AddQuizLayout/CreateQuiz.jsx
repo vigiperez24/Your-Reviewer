@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import {
   FaPaperPlane,
@@ -12,10 +13,12 @@ function CreateQuiz() {
       {/* Button,  */}
 
       <div className="flex items-center justify-between mb-4">
+      <Link to="/ListQuiz">
         <button className="flex items-center justify-center gap-2">
           <FaArrowLeft />
           <span>Back</span>
         </button>
+        </Link>
         <button className="bg-purple-700  text-white  py-2 px-4 rounded flex items-center justify-center gap-2 ">
           <span>Publish</span>
           <FaPaperPlane />

@@ -1,10 +1,10 @@
 // src/components/layout/DashboardLayout.jsx
 import React from "react";
-import Sidebar from "../../Sidebar/Sidebar";
-import MobileSidebar from "../../Sidebar/MobileSidebar";
-import QuickStats from "../../DashboardLayout/QuickStats";
-import Badges from "../../DashboardLayout/Badges";
-import RecentActivity from "../../DashboardLayout/RecentActivity";
+import Sidebar from "../Sidebar/Sidebar";
+import MobileSidebar from "../Sidebar/MobileSidebar";
+import QuickStats from "../DashboardLayout/QuickStats";
+import Badges from "../DashboardLayout/Badges";
+import RecentActivity from "../DashboardLayout/RecentActivity";
 
 import { Link} from "react-router-dom";
 function DashboardLayout() {

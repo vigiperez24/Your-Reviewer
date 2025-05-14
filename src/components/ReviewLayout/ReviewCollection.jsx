@@ -1,19 +1,19 @@
 import React from "react";
-import Sidebar from "../../Sidebar/Sidebar";
-import MobileSidebar from "../../Sidebar/MobileSidebar";
-import SubjectCard from "../../ReviewLayout/SubjectCard";
-import RecentQuizes from "../../ReviewLayout/RecentQuizes";
+import Sidebar from "../Sidebar/Sidebar";
+import MobileSidebar from "../Sidebar/MobileSidebar";
+import SubjectCard from "./SubjectCard";
+import RecentQuizes from "./RecentQuizes";
 
 function ReviewCollection() {
   return (
     <div className="flex flex-col md:flex-row h-screen w-full relative">
       {/* Sidebar for desktop */}
-      <aside className="hidden md:block">
+      <aside className="hidden md:block z-50">
         <Sidebar />
       </aside>
 
       {/* Sidebar for mobile */}
-      <div className="block md:hidden">
+      <div className="block md:hidden z-50">
         <MobileSidebar />
       </div>
       {/* Subject AddSubjectModal, SubjectCard, SubjectList */}

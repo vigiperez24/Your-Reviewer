@@ -1,5 +1,5 @@
 import React from "react";
-import ListQuiz from "../components/AddQuizLayout/ListQuiz";
+import ListQuiz from "../components/AddQuizLayout/ListQuizzes";
 
 function ListQuizzes () {
     return(

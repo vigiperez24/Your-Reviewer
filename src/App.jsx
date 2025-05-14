@@ -17,7 +17,7 @@ import './index.css';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="Home" element={<Home />} />
       <Route path="Register" element={<RegisterandLogin />} />
       <Route path="Login" element={<Login />} />
 
@@ -25,7 +25,7 @@ function App() {
       <Route path="Dashboard" element={<Dashboard />} />
       <Route path="Review" element={<Review />} />
       <Route path="AddQuiz" element={<AddQuiz />} />
-      <Route path="ListQuizzes" element={<ListQuizzes />} />
+      <Route path="ListQuiz" element={<ListQuizzes />} />
 
     </Routes>
   );

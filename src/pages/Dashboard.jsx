@@ -1,6 +1,6 @@
 import React from 'react'
 // import Sidebar from '../components/Sidebar/Sidebar'
-import DashboardCollection from '../components/layout/DashboardCollection/DashboardCollection'
+import DashboardCollection from '../components/DashboardLayout/DashboardCollection'
 
 
 

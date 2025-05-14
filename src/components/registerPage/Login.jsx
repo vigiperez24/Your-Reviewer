@@ -24,7 +24,7 @@ function Login() {
         </div>
 
         {/* Form container  Right Side*/}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 w-full px-4">
           {/* Title Container */}
           <div>
             {/* Logo */}
