@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import noContent from "../../assets/SubjectCardImg/noContent.svg";
 
 import {
   FaPlus,
@@ -14,7 +15,7 @@ import {
 } from "react-icons/fa";
 
 function SubjectCard() {
-  const navigate  = useNavigate()
+  const navigate = useNavigate();
   const [folders, setFolders] = useState([
     { id: 1, name: "Filipino", quizCount: 5, createdAt: "Yesterday" },
     { id: 2, name: "English", quizCount: 3, createdAt: "Tuesday" },
@@ -73,7 +74,9 @@ function SubjectCard() {
   };
 
   const handleDeleteClick = (id) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this folder?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this folder?"
+    );
     if (confirmDelete) {
       setFolders(folders.filter((f) => f.id !== id));
     }
@@ -110,63 +113,79 @@ function SubjectCard() {
       {/* Folder Container */}
       <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {folders.map((folder) => (
-
-          
-            <div key={folder.id}  className="border-l-4 border-indigo-200 hover:border-indigo-400 rounded-md flex justify-between px-4 py-2 items-center bg-white shadow-md gap-4 relative">
-              <div onClick={()=> navigate("/ListQuizzes")} className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-indigo-100 flex items-center justify-center rounded-full">
-                  <span className="text-indigo-600 text-xl">
-                    <FaRegFolderOpen />
-                  </span>
-                </div>
-
-                <div className="flex flex-col">
-                  <h1 className="text-lg font-semibold">{folder.name}</h1>
-                  <p className="text-gray-500 text-sm">
-                    {folder.quizCount} quiz{folder.quizCount !== 1 ? "es" : ""}
-                  </p>
-                  <p className="text-gray-500 text-sm">Created: {folder.createdAt}</p>
-                </div>
+          <div
+            key={folder.id}
+            className="border-l-4 border-indigo-200 hover:border-indigo-400 rounded-md flex justify-between px-4 py-2 items-center bg-white shadow-md gap-4 relative"
+          >
+            <div
+              onClick={() => navigate("/ListQuizzes")}
+              className="flex items-center gap-4"
+            >
+              <div className="w-10 h-10 bg-indigo-100 flex items-center justify-center rounded-full">
+                <span className="text-indigo-600 text-xl">
+                  <FaRegFolderOpen />
+                </span>
               </div>
 
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleDropDown(folder.id);
-                }}
-                className="text-gray-500 hover:text-gray-700 focus:outline-none"
-              >
-                <FaEllipsisV />
-              </button>
-
-              {openMenuId === folder.id && (
-                <div className="absolute right-0 top-8 mt-1 w-32 bg-white border rounded-md shadow-lg z-10">
-                  <ul className="py-1">
-                    <li>
-                      <button
-                        onClick={(e) => {e.stopPropagation(); handleEditClick(folder)}}
-                        className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition"
-                      >
-                        <FaEdit className="text-indigo-600" /> Edit
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        onClick={() => handleDeleteClick(folder.id)}
-                        className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100 transition"
-                      >
-                        <FaTrash className="text-red-500" /> Delete
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              )}
+              <div className="flex flex-col">
+                <h1 className="text-lg font-semibold">{folder.name}</h1>
+                <p className="text-gray-500 text-sm">
+                  {folder.quizCount} quiz{folder.quizCount !== 1 ? "es" : ""}
+                </p>
+                <p className="text-gray-500 text-sm">
+                  Created: {folder.createdAt}
+                </p>
+              </div>
             </div>
 
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                toggleDropDown(folder.id);
+              }}
+              className="text-gray-500 hover:text-gray-700 focus:outline-none"
+            >
+              <FaEllipsisV />
+            </button>
+
+            {openMenuId === folder.id && (
+              <div className="absolute right-0 top-8 mt-1 w-32 bg-white border rounded-md shadow-lg z-10">
+                <ul className="py-1">
+                  <li>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleEditClick(folder);
+                      }}
+                      className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition"
+                    >
+                      <FaEdit className="text-indigo-600" /> Edit
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleDeleteClick(folder.id)}
+                      className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-100 transition"
+                    >
+                      <FaTrash className="text-red-500" /> Delete
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         ))}
 
         {folders.length === 0 && (
-          <p className="italic text-gray-500 col-span-full">No folders yet. Create one!</p>
+          <div className="col-span-full flex flex-col items-center justify-center py-12 text-center">
+            {/* Image */}
+            <img src={noContent} alt="No folders" className="w-72 h-72 mb-4" />
+
+            {/* Message */}
+            <p className="italic text-gray-500 text-sm md:text-base">
+              No Subject yet. Create one!
+            </p>
+          </div>
         )}
       </div>
 

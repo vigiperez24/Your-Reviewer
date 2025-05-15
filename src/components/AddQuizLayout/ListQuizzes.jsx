@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import noContent from "../../assets/SubjectCardImg/noContent.svg";
+
 import {
   FaPlus,
   FaFilter,
@@ -119,11 +121,17 @@ function ListQuiz() {
           ))}
         </div>
       </div>
-      {quizzes.length === 0 && (
-        <div className="flex justify-center">
-          <p className="italic text-gray-500 ">No quizzes yet. Create one!</p>
-        </div>
-      )}
+        {quizzes.length === 0 && (
+          <div className="col-span-full flex flex-col items-center justify-center py-12 text-center">
+            {/* Image */}
+            <img src={noContent} alt="No folders" className="w-72 h-72 mb-4" />
+
+            {/* Message */}
+            <p className="italic text-gray-500 text-sm md:text-base">
+              No quiz yet. Create one!
+            </p>
+          </div>
+        )}
     </div>
   );
 }
