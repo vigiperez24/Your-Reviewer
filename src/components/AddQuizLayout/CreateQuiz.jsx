@@ -6,6 +6,7 @@ import {
   FaTrashAlt,
   FaEdit,
   FaPlus,
+  FaMinus,
 } from "react-icons/fa";
 function CreateQuiz() {
   return (
@@ -162,7 +163,7 @@ function CreateQuiz() {
           <div>
             <h1 className="text-xl font-semibold">Create New Quiz</h1>
           </div>
-            <hr className="border-1 border-gray-300" />
+          <hr className="border-1 border-gray-300" />
           {/* Time and Points */}
           <div className="flex justify-between items-center">
             {" "}
@@ -207,16 +208,20 @@ function CreateQuiz() {
           {/* Type of question Drop down */}
           <div className="flex  justify-between items-start gap-1">
             <p className="font-medium tracking-wide">Type of Answer:</p>
-            <select className="bg-gray-100 rounded-lg px-2 py-1 outline-buttonBg" name="" id="">
+            <select
+              className="bg-gray-100 rounded-lg px-2 py-1 outline-buttonBg"
+              name=""
+              id=""
+            >
               <option value="true-false">True or False</option>
               <option value="multiple">Multiple Choices</option>
               <option value="Identification">Identification</option>
             </select>
           </div>
           <hr className="border-1 border-gray-300" />
-          {/* Correct Answer of true or false*/}
+          {/*  Answer of true or false*/}
           <div className="flex justify-between hidden">
-            <p className="font-medium tracking-wide">Correct Answer</p>
+            <p className="font-medium tracking-wide">Answer:</p>
             <div className="flex justify-between items-cent gap-2">
               <label>
                 <input type="radio" name="answer" value="True" /> True
@@ -226,16 +231,75 @@ function CreateQuiz() {
               </label>
             </div>
           </div>
-          {/* Correct Answer of Identification */}
-          <div>
-            <input className="w-full bg-gray-200 p-4 rounded-lg outline-buttonBg" type="text" placeholder="Enter the correct answer" />
+          {/*  Answer of Identification */}
+          <div className="flex flex-col gap-2 hidden">
+            <p className="font-medium tracking-wide">Correct Answer</p>
+            <input
+              className="w-full bg-gray-200 p-4 rounded-lg outline-buttonBg"
+              type="text"
+              placeholder="Enter the correct answer"
+            />
           </div>
           <hr className="border-1 border-gray-300" />
+          {/* Answer of Multiple choices */}
+          <div className="flex flex-col gap-2">
+            <h1 className="font-medium tracking-wide">Answer</h1>
+            {/* Label and Choices */}
+            <div className="flex items-center justify-center gap-4">
+              <p className="">A</p>
+              <input
+                className="w-full bg-gray-200 p-2 rounded-lg outline-buttonBg"
+                type="text"
+                placeholder="Choice A"
+              />
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <p className="">B</p>
+              <input
+                className="w-full bg-gray-200 p-2 rounded-lg outline-buttonBg"
+                type="text"
+                placeholder="Choice B"
+              />
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <p className="">C</p>
+              <input
+                className="w-full bg-gray-200 p-2 rounded-lg outline-buttonBg"
+                type="text"
+                placeholder="Choice C"
+              />
+            </div>
+            {/* Correct Answer and Buttons */}
+            <div className="flex items-center justify-between">
+              <div className="flex  items-center gap-1">
+                <p className="font-medium tracking-wide">Select Correct Answer</p>
+                <select
+                  className="bg-gray-100 rounded-lg px-2 py-1 outline-buttonBg w-16"
+                  name=""
+                  id=""
+                >
+                  <option value="">- -</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                </select>
+              </div>
+              {/* Two buttons right */}
+              <div className="flex items-center justify-center gap-4">
+                <button><FaPlus className="text-xl text-green-700 hover:text-green-500" /></button>
+                <button><FaMinus className="text-xl text-red-700 hover:text-green-500" /></button>
+              </div>
+            </div>
+          </div>
           {/* Three Buttons */}
-          <div className="flex gap-2 justify-end">
-            <button className="text-gray-500 font-medium">Cancel</button>
-            <button className="bg-gray-200 p-2 rounded-lg font-medium">Save and Add Another</button>
-            <button className="bg-buttonBg hover:bg-bgButtonHover px-2 text-white rounded-lg">Save</button>
+          <div className="flex gap-3 justify-end">
+            <button className="text-gray-700 font-medium">Cancel</button>
+            <button className="bg-gray-200 p-2 rounded-lg font-medium">
+              Save and Add Another
+            </button>
+            <button className="bg-buttonBg hover:bg-bgButtonHover px-2 text-white rounded-lg">
+              Save
+            </button>
           </div>
         </div>
       </div>
