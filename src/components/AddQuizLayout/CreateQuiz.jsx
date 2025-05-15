@@ -13,7 +13,7 @@ function CreateQuiz() {
       {/* Button,  */}
 
       <div className="flex items-center justify-between mb-4">
-      <Link to="/ListQuiz">
+      <Link to="/Review">
         <button className="flex items-center justify-center gap-2">
           <FaArrowLeft />
           <span>Back</span>

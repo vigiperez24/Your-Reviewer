@@ -25,8 +25,7 @@ function ListQuiz() {
         <Link to="/Review">
           <button className="flex items-center justify-center gap-2">
             <FaArrowLeft />
-              <span>Back</span>
-
+            <span>Back</span>
           </button>
         </Link>
         <div className="flex flex-col gap-6">
@@ -120,6 +119,11 @@ function ListQuiz() {
           ))}
         </div>
       </div>
+      {quizzes.length === 0 && (
+        <div className="flex justify-center">
+          <p className="italic text-gray-500 ">No quizzes yet. Create one!</p>
+        </div>
+      )}
     </div>
   );
 }

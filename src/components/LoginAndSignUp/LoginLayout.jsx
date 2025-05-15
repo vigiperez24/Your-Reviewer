@@ -40,8 +40,8 @@ function Login() {
           {/* Already have an account? Login Container */}
           <div>
             <p className="text-sm font-thin md:text-sm">
-              You don't have an account?{" "}
-              <Link className="text-purple-500 hover:underline" to="/Register">
+              You don't have an account?<span> </span>
+              <Link className="text-purple-500 hover:underline" to="/SignUp">
                 Sign up here
               </Link>
             </p>

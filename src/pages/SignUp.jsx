@@ -1,12 +1,12 @@
 import React from "react";
-import Signup from "../components/registerPage/Signup";
-import Login from "../components/registerPage/Login";
+import Signup from "../components/LoginAndSignUp/SignupLayout";
+
 
 function Register() {
   return (
     <>
       <Signup />
-      <Login />
+
     </>
   );
 }

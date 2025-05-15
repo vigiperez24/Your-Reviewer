@@ -1,5 +1,6 @@
 import React from "react";
 import heroImg from "../../assets/heroImg/heroImg.svg";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -16,11 +17,14 @@ function Hero() {
           </p>
           {/* buttons */}
           <div className=" flex flex-row gap-2">
-            <button className=" bg-buttonBg hover:bg-bgButtonHover text-buttonText px-3 py-2 rounded-md text-sm lg:text-lg">
-              <a href="#" className="text-white hover:underline">
-                Start reviewing
-              </a>
-            </button>
+            <Link to={"/Login"}>
+              <button className=" bg-buttonBg hover:bg-bgButtonHover text-buttonText px-3 py-2 rounded-md text-sm lg:text-lg">
+                <a href="#" className="text-white hover:underline">
+                  Start reviewing
+                </a>
+              </button>
+            </Link>
+
             <div>
               <p className=" font-semibold xl:text-lg">
                 Create Your First Quiz
