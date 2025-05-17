@@ -9,7 +9,7 @@ import Footer from '../components/landingPage/Footer'
 function Home() {
   return (
     <>
-  <div className=' relative z-10 '>
+  <div className=' relative z-10 pb-20 '>
   < Header/>
   </div>
     <Hero/>
