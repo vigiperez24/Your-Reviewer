@@ -142,9 +142,26 @@ function CreateQuiz() {
           <div className="px-4 py-2 flex flex-col gap-2 ">
             <p className=" italic text-lg">
               <span className="not-italic">Question 1 :</span> What is the
-              chemical symbol for water? Lorem ipsum dolor sit amet consectetur,
+              chemical symbol for water? Loresm ipsusm dolor sit amet consectetur,
               adipisicing elit. Tempora hic, consequuntur inventore dolore qui
-              voluptates, fugiat assumenda blanditiis esse sequi repellendus
+              voluptates, fugiat assumenda blanditiis essse sequi repellendus
+              aliquam. Vel temporibus, dicta aliquid beatae quae atque esse.
+            </p>
+            <p className="italic">Lorem, ipsum.</p>
+            {/* Correct Answer */}
+            <div className="flex gap-2">
+              <p className="italic font-semibold text-green-700">
+                Correct Answer:
+              </p>
+              <span className="italic font-semibold"> Lorem, ipsum.</span>
+            </div>
+          </div>
+          <div className="px-4 py-2 flex flex-col gap-2 ">
+            <p className=" italic text-lg">
+              <span className="not-italic">Question 1 :</span> What is the
+              chemical symbol for water? Loresm ipsusm dolor sit amet consectetur,
+              adipisicing elit. Tempora hic, consequuntur inventore dolore qui
+              voluptates, fugiat assumenda blanditiis essse sequi repellendus
               aliquam. Vel temporibus, dicta aliquid beatae quae atque esse.
             </p>
             <p className="italic">Lorem, ipsum.</p>
