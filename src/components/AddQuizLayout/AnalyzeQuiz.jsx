@@ -1,8 +1,11 @@
 import React from "react";
+import PublishQuiz from "./PublishQuiz";
+Link;
 
 import { FaCheckCircle, FaEdit, FaListUl, FaChartPie } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-function AnalyzeQuiz({onClose}) {
+function AnalyzeQuiz({ onClose }) {
   return (
     <div className="bg- max-w-md w-full bg-white rounded-md shadow-md flex flex-col  gap-2 ">
       {/* Title Modal */}
@@ -66,12 +69,14 @@ function AnalyzeQuiz({onClose}) {
       <hr className="border-1 border-gray-300" />
       {/* Two Buttons */}
       <div className="flex items-center justify-end  px-4 py-4 gap-4">
-        <button onClick={onClose}  className="text-gray-500 font-semibold ">
+        <button onClick={onClose} className="text-gray-500 font-semibold ">
           Cancel
         </button>
-        <button className="bg-buttonBg hover:bg-bgButtonHover py-1 px-2 text-white rounded tracking-wide">
-          Publish
-        </button>
+        <Link to="/PublishQuizzes">
+          <button className="bg-buttonBg hover:bg-bgButtonHover py-1 px-2 text-white rounded tracking-wide">
+            Publish
+          </button>
+        </Link>
       </div>
     </div>
   );
