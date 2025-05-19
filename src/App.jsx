@@ -23,6 +23,7 @@ function App() {
       <Route path="Review" element={<Review />} />
       <Route path="AddQuiz" element={<AddQuiz />} />
       <Route path="ListQuizzes" element={<ListQuizzes />} />
+      {/* Publish Quiz Review */}
     </Routes>
   );
 }

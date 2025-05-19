@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import AnalyzeQuiz from "./AnalyzeQuiz";
+
 import {
   FaPaperPlane,
   FaArrowLeft,
@@ -9,6 +11,7 @@ import {
   FaMinus,
 } from "react-icons/fa";
 function CreateQuiz() {
+  const [modalPublish, setModalPublish] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [questionType, setQuestionType] = useState("");
   useEffect(() => {
@@ -26,7 +29,10 @@ function CreateQuiz() {
             <span>Back</span>
           </button>
         </Link>
-        <button className="bg-buttonBg  text-white  py-2 px-4 rounded flex items-center justify-center gap-2 ">
+        <button
+          onClick={() => setModalPublish(true)}
+          className="bg-buttonBg  text-white  py-2 px-4 rounded flex items-center justify-center gap-2 "
+        >
           <span>Publish</span>
           <FaPaperPlane />
         </button>
@@ -109,8 +115,9 @@ function CreateQuiz() {
               voluptates, fugiat assumenda blanditiis esse sequi repellendus
               aliquam. Vel temporibus, dicta aliquid beatae quae atque esse.
             </p>
-
+            <hr className="border-1 border-gray-300" />
             <p className="italic">True or False</p>
+            <hr className="border-1 border-gray-300" />
             {/* Correct Answer */}
             <div className="flex gap-2">
               <p className="italic font-semibold text-green-700">
@@ -142,29 +149,15 @@ function CreateQuiz() {
           <div className="px-4 py-2 flex flex-col gap-2 ">
             <p className=" italic text-lg">
               <span className="not-italic">Question 1 :</span> What is the
-              chemical symbol for water? Loresm ipsusm dolor sit amet consectetur,
-              adipisicing elit. Tempora hic, consequuntur inventore dolore qui
-              voluptates, fugiat assumenda blanditiis essse sequi repellendus
-              aliquam. Vel temporibus, dicta aliquid beatae quae atque esse.
+              chemical symbol for water? Loresm ipsusm dolor sit amet
+              consectetur, adipisicing elit. Tempora hic, consequuntur inventore
+              dolore qui voluptates, fugiat assumenda blanditiis essse sequi
+              repellendus aliquam. Vel temporibus, dicta aliquid beatae quae
+              atque esse.
             </p>
+            <hr className="border-1 border-gray-300" />
             <p className="italic">Lorem, ipsum.</p>
-            {/* Correct Answer */}
-            <div className="flex gap-2">
-              <p className="italic font-semibold text-green-700">
-                Correct Answer:
-              </p>
-              <span className="italic font-semibold"> Lorem, ipsum.</span>
-            </div>
-          </div>
-          <div className="px-4 py-2 flex flex-col gap-2 ">
-            <p className=" italic text-lg">
-              <span className="not-italic">Question 1 :</span> What is the
-              chemical symbol for water? Loresm ipsusm dolor sit amet consectetur,
-              adipisicing elit. Tempora hic, consequuntur inventore dolore qui
-              voluptates, fugiat assumenda blanditiis essse sequi repellendus
-              aliquam. Vel temporibus, dicta aliquid beatae quae atque esse.
-            </p>
-            <p className="italic">Lorem, ipsum.</p>
+            <hr className="border-1 border-gray-300" />
             {/* Correct Answer */}
             <div className="flex gap-2">
               <p className="italic font-semibold text-green-700">
@@ -357,6 +350,11 @@ function CreateQuiz() {
               </button>
             </div>
           </div>
+        </div>
+      )}
+      {modalPublish && (
+        <div className="bg-black fixed inset-0 bg-opacity-50 flex justify-center items-center z-50">
+          <AnalyzeQuiz onClose={()=> setModalPublish(false)} />
         </div>
       )}
     </div>
