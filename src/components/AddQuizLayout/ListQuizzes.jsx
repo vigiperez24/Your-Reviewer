@@ -93,9 +93,12 @@ function ListQuiz() {
               </div>
 
               {/* Action Button */}
-              <button className="w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">
-                Take a Quiz
-              </button>
+              <Link to={"/TakeQuiz"}>
+                <button className="w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">
+                  Take a Quiz
+                </button>
+              </Link>
+
               {showModal === quiz.id && (
                 <div
                   ref={dropdownRef}
@@ -121,17 +124,17 @@ function ListQuiz() {
           ))}
         </div>
       </div>
-        {quizzes.length === 0 && (
-          <div className="col-span-full flex flex-col items-center justify-center py-12 text-center">
-            {/* Image */}
-            <img src={noContent} alt="No folders" className="w-72 h-72 mb-4" />
+      {quizzes.length === 0 && (
+        <div className="col-span-full flex flex-col items-center justify-center py-12 text-center">
+          {/* Image */}
+          <img src={noContent} alt="No folders" className="w-72 h-72 mb-4" />
 
-            {/* Message */}
-            <p className="italic text-gray-500 text-sm md:text-base">
-              No quiz yet. Create one!
-            </p>
-          </div>
-        )}
+          {/* Message */}
+          <p className="italic text-gray-500 text-sm md:text-base">
+            No quiz yet. Create one!
+          </p>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,19 +1,19 @@
 /* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Default light mode styles */
-:root { 
+:root {
   --bg-color: #f5f5f5;
   --text-color: #222;
-  --button-bg: #673ab7; 
+  --button-bg: #673ab7;
   --button-text: #fff;
   --card-bg: #fff;
   --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-} 
+}
 
 /* Dark mode overrides */
 /* @media (prefers-color-scheme: dark) {
@@ -30,7 +30,16 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
+}
+
+.recharts-pie-sector:focus,
+.recharts-pie-sector > g:focus,
+.recharts-pie-sector > g > g:focus {
+  outline: none !important;
+  outline-color: transparent;
+  outline-style: none;
+  outline-width: 0;
 }
