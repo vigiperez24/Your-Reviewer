@@ -40,7 +40,7 @@ function ListQuiz() {
           <div className="flex flex-wrap gap-3 justify-between items-center">
             {/* New Folder Button */}
             <Link to={"/AddQuiz"}>
-              <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded-md flex items-center justify-center gap-2">
+              <button className="bg-buttonBg hover:bg-bgButtonHover text-white px-3 py-1 rounded-md flex items-center justify-center gap-2">
                 <FaPlus /> New Quiz
               </button>
             </Link>
@@ -94,7 +94,7 @@ function ListQuiz() {
 
               {/* Action Button */}
               <Link to={"/TakeQuiz"}>
-                <button className="w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">
+                <button className="w-full bg-bg-buttonBg text-white px-4 py-2 rounded-md bg-buttonBg hover:bg-bgButtonHover transition-colors">
                   Take a Quiz
                 </button>
               </Link>
@@ -107,7 +107,7 @@ function ListQuiz() {
                   <ul>
                     <li>
                       <button className="flex items-center  justify-start w-full gap-2 text-sm hover:bg-gray-100 transition px-2 py-2">
-                        <FaEdit className="text-indigo-600" />
+                        <FaEdit className="text-bg-buttonBg" />
                         Edit
                       </button>
                     </li>

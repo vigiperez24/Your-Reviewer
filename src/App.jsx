@@ -10,7 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import PublishQuizzes from "./pages/PublishQuizzes";
 import TakeQuiz from "./pages/TakeQuiz";
 import QuizAnswer from "./pages/QuizAnswer";
-
+import History from "./pages/History";
 
 import "./index.css";
 
@@ -35,6 +35,7 @@ function App() {
       {/* Quiz Answer */}
       <Route path="TakeQuiz" element={<TakeQuiz />} />
       <Route path="QuizAnswer" element={<QuizAnswer />} />
+      <Route path="History" element={<History />} />
     </Routes>
   );
 }

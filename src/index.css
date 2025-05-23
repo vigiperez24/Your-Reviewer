@@ -35,11 +35,3 @@ body {
   padding: 0;
 }
 
-.recharts-pie-sector:focus,
-.recharts-pie-sector > g:focus,
-.recharts-pie-sector > g > g:focus {
-  outline: none !important;
-  outline-color: transparent;
-  outline-style: none;
-  outline-width: 0;
-}

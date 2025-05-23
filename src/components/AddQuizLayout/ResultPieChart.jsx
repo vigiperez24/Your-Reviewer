@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
-function ResultPieChart() {
-  // Data for Quiz
+function ResultPieChart({ onRetake }) {
   const quizzes = [
     {
       id: 1,
       type: "True or False",
-      question: "The Earth revolves around the Sun.    ?              ",
+      question: "The Earth revolves around the Sun.",
       correctAnswer: "True",
     },
     {
@@ -72,33 +71,35 @@ function ResultPieChart() {
     },
   ];
 
-  //   Dummy Answer
-
+  // Dummy User Answers
   const userAnswers = {
     1: "True",
-    2: "90°C", // Wrong
+    2: "90°C",
     3: "Mitochondria",
     4: "True",
-    5: "Saturn", // Wrong
+    5: "Saturn",
     6: "Nitrogen",
     7: "True",
     8: "H2O",
     9: "Hydrogen",
-    10: "False", // Wrong
+    10: "False",
   };
 
   const [showResults, setShowResults] = useState(false);
-  // Data Pie
+
+  const correctCount = quizzes.filter(
+    (quiz) => userAnswers[quiz.id] === quiz.correctAnswer
+  ).length;
+
   const data = [
-    { name: "Correct", value: 7 },
-    { name: "Incorrect", value: 3 },
+    { name: "Correct", value: correctCount },
+    { name: "Incorrect", value: quizzes.length - correctCount },
   ];
 
-  const COLORS = ["#7366ff", "#c62828"]; // Purple and Red
-  const total = data.reduce((acc, cur) => acc + cur.value, 0);
+  const COLORS = ["#7366ff", "#c62828"];
 
   return (
-    <div className="flex flex-col items-center gap-20 px-4  ">
+    <div className="flex flex-col items-center gap-10 px-4 py-6">
       <div className="w-full max-w-3xl bg-white rounded-md shadow-md p-4">
         {/* Header */}
         <div className="text-center p-2">
@@ -108,24 +109,18 @@ function ResultPieChart() {
         </div>
         <hr />
 
-        {/* Content Container - Responsive Flexbox */}
+        {/* Chart Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-4">
-          {/* Score List */}
-          <div className="text-gray-500 text-sm text-start  w-[200px]">
+          <div className="text-gray-500 text-sm text-start w-[200px]">
             <ul className="list-disc pl-5 space-y-2">
-              <li>Score: 7/10 </li>
-              <li>Percentage: 70%</li>
+              <li>Score: {correctCount}/10</li>
+              <li>Percentage: {Math.round((correctCount / 10) * 100)}%</li>
               <li>Duration: 5 mins</li>
             </ul>
           </div>
 
-          {/* Pie Chart Container */}
           <div className="flex flex-col items-center">
-            <PieChart
-              width={250}
-              height={250}
-              className="sm:w-[260px] sm:h-[260px]"
-            >
+            <PieChart width={250} height={250}>
               <Pie
                 data={data}
                 cx="50%"
@@ -134,7 +129,10 @@ function ResultPieChart() {
                 outerRadius={70}
                 dataKey="value"
                 label={({ name, value }) => {
-                  const percent = ((value / total) * 100).toFixed(1);
+                  const percent = (
+                    (value / data.reduce((a, b) => a + b.value, 0)) *
+                    100
+                  ).toFixed(1);
                   return `${value} (${percent}%)`;
                 }}
               >
@@ -169,71 +167,69 @@ function ResultPieChart() {
         </div>
 
         {/* Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mt-4 px-4">
+        <div className="flex flex-wrap justify-center gap-3 mt-6 px-4">
           <button
             onClick={() => setShowResults(!showResults)}
-            className="bg-green-600 text-white font-semibold px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto"
+            className="bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-md transition"
           >
-            {showResults ? "Hide Result" : "Show Result"}
+            {showResults ? "Hide Answers" : "Show Answers"}
           </button>
-          <button className="bg-gray-500 text-white font-semibold px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto">
-            Retake
+          <button
+            onClick={onRetake}
+            className="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded-md transition"
+          >
+            Retake Quiz
           </button>
-          <Link to={"/Dashboard"}>
-            <button className="bg-indigo-600 text-white font-semibold px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto">
+          <Link to="/Dashboard">
+            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-md transition">
               Dashboard
             </button>
           </Link>
         </div>
       </div>
-
-      {/* Show Result  */}
-
+            
+      {/* Show Results Section */}
       {showResults && (
-        <div className="flex flex-col gap-10">
+        <div className="w-full max-w-3xl space-y-6 mt-6">
           {quizzes.map((quiz) => (
             <div
               key={quiz.id}
-              className="bg-white rounded flex flex-col border-t-4 border-purple-700  shadow-md"
+              className="bg-white rounded border-t-4 border-purple-700 shadow-md overflow-hidden"
             >
               <div className="flex justify-between items-center bg-gray-200 text-gray-500 text-sm py-3 px-4">
-                <div className="flex gap-4 items-center justify-between w-full">
-                  <p>1 point</p>
-                </div>
+                <p>1 point</p>
+                <p className="text-gray-700">Time Remaining</p>
               </div>
               <hr />
-              {/* Question */}
-              <div className="px-4 py-2 ">
-                <h1 className="text-lg">
-                  {quiz.id}. {quiz.question}
-                </h1>
-                <div className="flex">
-                  <div className="flex gap-2">
-                    <span>Your Answer: </span>
-                    <span
-                      className={
-                        userAnswers[quiz.id] === quiz.correctAnswer
-                          ? "text-green-600"
-                          : "text-red-600"
-                      }
-                    >
-                      <div className="flex items-center gap-2">
-                        <span>{userAnswers[quiz.id]}</span>
-                        <span>
-                          {" "}
-                          {userAnswers[quiz.id] === quiz.correctAnswer ? (
-                            <FaCheckCircle className="text-green-500" />
-                          ) : (
-                            <FaTimesCircle className="text-red-500" />
-                          )}
-                        </span>
-                      </div>
+              <div className="p-4">
+                <h2 className="text-lg font-medium mb-2">
+                  Q{quiz.id}. {quiz.question}
+                </h2>
+
+                {/* Your Answer */}
+                <div className="mb-2">
+                  <strong>Your Answer:</strong>{" "}
+                  <span
+                    className={
+                      userAnswers[quiz.id] === quiz.correctAnswer
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }
+                  >
+                    <span className="inline-flex items-center gap-1">
+                      {userAnswers[quiz.id]}
+                      {userAnswers[quiz.id] === quiz.correctAnswer ? (
+                        <FaCheckCircle className="text-green-500" />
+                      ) : (
+                        <FaTimesCircle className="text-red-500" />
+                      )}
                     </span>
-                  </div>
+                  </span>
                 </div>
+
                 {/* Correct Answer */}
                 <div>
-                  <span>Correct Answer: {quiz.correctAnswer}</span>
+                  <strong>Correct Answer:</strong> {quiz.correctAnswer}
                 </div>
               </div>
             </div>

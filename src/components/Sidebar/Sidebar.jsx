@@ -27,10 +27,10 @@
       },
       { id: "review", label: "Review", icon: <FaClipboard />, path: "/review" },
       {
-        id: "progress",
-        label: "Progress",
+        id: "History",
+        label: "History",
         icon: <FaChartBar />,
-        path: "/progress",
+        path: "/History",
       },
       { id: "profile", label: "Profile", icon: <FaUser />, path: "/profile" },
       { id: "settings", label: "Settings", icon: <FaCog />, path: "/settings" },

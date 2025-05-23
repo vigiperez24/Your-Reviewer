@@ -6,7 +6,8 @@ function TakeQuizPage() {
     {
       id: 1,
       type: "True or False",
-      question: "The Earth revolves around the Sun.                     Science Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, sunt officia. Perspiciatis consequatur doloribus consequuntur magni, blanditiis vero architecto temporibus, rem eum quas asperiores sit. Adipisci odio aspernatur autem sint?",
+      question:
+        "The Earth revolves around the Sun.                     Science Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, sunt officia. Perspiciatis consequatur doloribus consequuntur magni, blanditiis vero architecto temporibus, rem eum quas asperiores sit. Adipisci odio aspernatur autem sint?",
       correctAnswer: "True",
     },
     {
@@ -72,9 +73,9 @@ function TakeQuizPage() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [getStarted, setGetStarted] = useState(false);
   const [SubmitedResult, setShowResults] = useState(false);
-
+  // Set Current Question
   const current = quizzes[currentQuestionIndex];
-
+  // Next button
   const handleNext = () => {
     if (currentQuestionIndex < quizzes.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -83,11 +84,19 @@ function TakeQuizPage() {
       setGetStarted(false);
     }
   };
-
+  // Previous Button
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
+  };
+
+  // Retake
+
+  const handleRetake = () => {
+    setCurrentQuestionIndex(0); // Reset question index
+    setGetStarted(true); // Go back to quiz mode
+    setShowResults(false); // Hide result
   };
 
   return (
@@ -105,9 +114,7 @@ function TakeQuizPage() {
               {/* Start Page */}
               {!getStarted && (
                 <div className="flex flex-col gap-4 p-4 shadow-md">
-                  <h1 className="text-center text-2xl font-semibold">
-
-                  </h1>
+                  <h1 className="text-center text-2xl font-semibold"></h1>
                   <hr />
                   <p className="text-xl text-center text-gray-500">
                     You will have {quizzes.length} questions. Answer them one by
@@ -203,7 +210,7 @@ function TakeQuizPage() {
         {/* Result Chart */}
         {SubmitedResult && (
           <div>
-            <ResultPieChart />
+            <ResultPieChart onRetake={handleRetake} />
           </div>
         )}
       </div>

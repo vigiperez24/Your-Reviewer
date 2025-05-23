@@ -92,7 +92,7 @@ function SubjectCard() {
       <div className="flex flex-wrap gap-3 justify-between items-center">
         <button
           onClick={handleCreateClick}
-          className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded-md flex items-center justify-center gap-2"
+          className="bg-buttonBg hover:bg-bgButtonHover text-white px-3 py-1 rounded-md flex items-center justify-center gap-2"
         >
           <FaPlus /> New
         </button>
